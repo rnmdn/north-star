@@ -37,8 +37,8 @@
   .hero::before { content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(90deg,rgba(3,13,34,.91) 0%,rgba(4,17,42,.68) 42%,rgba(4,17,42,.12) 76%),linear-gradient(0deg,rgba(3,13,34,.62),transparent 40%); }
   .nav-shell { position:relative; z-index:3; background:#06152d; border-bottom:1px solid rgba(221,242,255,.18); }
   .nav { display:flex; align-items:center; justify-content:space-between; gap:24px; padding:16px 0; }
-  .brand,.footer-brand { display:inline-flex; align-items:center; width:max-content; flex:none; padding:0 4px; border-radius:8px; background:var(--ice); text-decoration:none; }
-  .brand-logo { display:block; width:170px; height:auto; }
+  .brand,.footer-brand { display:inline-flex; align-items:center; width:max-content; flex:none; padding:0; background:transparent; text-decoration:none; }
+  .brand-logo { display:block; width:170px; height:auto; filter:brightness(0) invert(1); }
   .footer-brand { background:transparent; padding:0; border-radius:0; }
   .footer-brand .brand-logo { width:148px; filter:brightness(0) invert(1); }
   .nav-links { display:flex; align-items:center; gap:32px; }
