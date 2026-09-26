@@ -25,7 +25,7 @@
   .hero-journey { position:relative; height:210svh; }
   .hero { position:sticky; top:0; height:100svh; min-height:100svh; display:flex; flex-direction:column; overflow:hidden; background:#071831; isolation:isolate; --journey-progress:0; --star-x:74%; --star-y:29%; }
   .hero-scene { position:absolute; inset:0; z-index:-2; overflow:hidden; pointer-events:none; }
-  .hero-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center center; transform:translate3d(calc(var(--journey-progress) * -3%),calc(var(--journey-progress) * -1%),0) scale(calc(1 + var(--journey-progress) * .16)); transform-origin:var(--star-x) var(--star-y); will-change:transform; }
+  .hero-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center top; transform:translate3d(calc(var(--journey-progress) * -3%),calc(var(--journey-progress) * -1%),0) scale(calc(1 + var(--journey-progress) * .16)); transform-origin:var(--star-x) var(--star-y); will-change:transform; }
   .scene-hill { position:absolute; inset:auto -4% -3%; height:29%; pointer-events:none; transform-origin:center bottom; will-change:transform; }
   .scene-hill--distant { background:#0b2b54; opacity:.24; clip-path:polygon(0 75%,13% 50%,26% 70%,38% 32%,51% 72%,66% 42%,79% 66%,92% 35%,100% 50%,100% 100%,0 100%); transform:translate3d(0,calc(var(--journey-progress) * -40px),0) scale(calc(1 + var(--journey-progress) * .05)); }
   .scene-hill--near { height:22%; background:#071d3d; opacity:.4; clip-path:polygon(0 70%,12% 40%,24% 67%,39% 55%,52% 77%,67% 45%,82% 70%,94% 39%,100% 57%,100% 100%,0 100%); transform:translate3d(0,calc(var(--journey-progress) * -80px),0) scale(calc(1 + var(--journey-progress) * .08)); }
@@ -34,7 +34,8 @@
   .star-glow { width:min(80vw,1000px); background:radial-gradient(circle,rgba(255,255,255,.95) 0%,rgba(119,210,255,.55) 20%,rgba(59,130,246,.18) 45%,transparent 70%); mix-blend-mode:screen; opacity:calc(.08 + var(--journey-progress) * .8); transform:translate(-50%,-50%) scale(calc(.18 + var(--journey-progress) * 2.5)); will-change:transform,opacity; }
   .journey-wash { position:absolute; inset:0; z-index:2; background:linear-gradient(180deg,transparent 0%,transparent 62%,var(--paper) 100%); opacity:clamp(0,calc((var(--journey-progress) - .8) * 5),1); pointer-events:none; }
   .hero::before { content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(90deg,rgba(3,13,34,.91) 0%,rgba(4,17,42,.68) 42%,rgba(4,17,42,.12) 76%),linear-gradient(0deg,rgba(3,13,34,.62),transparent 40%); }
-  .nav { display:flex; align-items:center; justify-content:space-between; gap:24px; padding:48px 0 28px; }
+  .nav-shell { position:relative; z-index:3; background:#06152d; border-bottom:1px solid rgba(221,242,255,.18); }
+  .nav { display:flex; align-items:center; justify-content:space-between; gap:24px; padding:32px 0 24px; }
   .brand,.footer-brand { display:inline-flex; align-items:center; width:max-content; flex:none; padding:0 4px; border-radius:8px; background:var(--ice); text-decoration:none; }
   .brand-logo { display:block; width:170px; height:auto; }
   .footer-brand { background:transparent; padding:0; border-radius:0; }
@@ -221,10 +222,10 @@
         <div class="scene-hill scene-hill--distant"></div><div class="scene-hill scene-hill--near"></div>
         <div class="star-rings"></div><div class="star-glow"></div>
       </div>
-      <nav class="nav wrap" aria-label="Main navigation">
+      <div class="nav-shell"><nav class="nav wrap" aria-label="Main navigation">
         <a class="brand" href="#top"><img class="brand-logo" src="assets/north-star-logo.png" alt="North Star" width="2048" height="687"></a>
         <div class="nav-links"><a href="#how">How it works</a><a href="#paths">Career paths</a><a class="nav-cta" href="assessment.html">Begin exploring</a></div>
-      </nav>
+      </nav></div>
       <div class="hero-content wrap">
         <p class="eyebrow">Your future in IT starts with a direction</p>
         <h1>Find your <em>way forward.</em></h1>
