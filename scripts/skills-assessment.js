@@ -239,7 +239,7 @@ runButton.addEventListener('click', () => {
   const token = crypto.randomUUID();
   const frame = document.createElement('iframe');
   frame.sandbox = 'allow-scripts';
-  frame.src = 'research-code-runner.html';
+  frame.src = 'scripts/research-code-runner.html';
   frame.hidden = true;
   frame.title = 'Isolated code runner';
   const finish = () => { clearTimeout(timeout); window.removeEventListener('message', receive); frame.remove(); runButton.disabled = false; resetButton.disabled = false; editor.disabled = false; };
