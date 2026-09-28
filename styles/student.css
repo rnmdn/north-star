@@ -147,3 +147,13 @@ button,a{touch-action:manipulation}
 }
 @media(max-width:360px){.flow-nav span,.flow-nav a{font-size:.7rem}}
 @media(prefers-reduced-motion:reduce){.button,.choice span{transition:none}}
+
+/* Optional prior experience is a checklist, not a required progress task. */
+.check-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:20px}
+.exposure-option{display:flex;align-items:center;gap:14px;min-height:82px;padding:18px;border:1px solid var(--line);border-radius:10px;background:white;font-size:.94rem;font-weight:750;line-height:1.4;cursor:pointer;transition:border-color .18s ease,background-color .18s ease}
+.exposure-option input{flex:0 0 auto;width:21px;height:21px;margin:0;accent-color:var(--cobalt);cursor:pointer}
+.exposure-option:hover{border-color:var(--cobalt)}
+.exposure-option:has(input:checked){border-color:var(--cobalt);background:#eef3ff}
+.exposure-option:has(input:focus-visible){outline:3px solid var(--teal);outline-offset:2px}
+@media(max-width:650px){.check-list{grid-template-columns:1fr}.exposure-option{min-height:66px;padding:14px 16px}}
+@media(prefers-reduced-motion:reduce){.exposure-option{transition:none}}
