@@ -168,3 +168,14 @@ button,a{touch-action:manipulation}
 .interest-form .choice input:checked+span,.interest-form .choice input:checked+span:hover{padding:10px 12px;border:0;background:var(--cobalt);box-shadow:none;color:white}
 .interest-form .choice input:focus-visible+span{outline:3px solid var(--teal);outline-offset:-3px}
 @media(max-width:650px){.interest-form .choice:nth-child(3) span{border-left:0;border-top:1px solid var(--line)}.interest-form .choice:nth-child(4) span{border-top:1px solid var(--line)}.interest-form .choice span{min-height:52px;font-size:.84rem}}
+
+/* Work style presents each either-or prompt as one decision. */
+.work-style-form .question{padding:20px 0 24px}
+.work-style-form .question legend{padding:0 0 12px;font-size:1.04rem}
+.work-style-form .choices.two{gap:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:white}
+.work-style-form .choice span{justify-content:center;min-height:64px;padding:14px 18px;border:0;border-radius:0;background:transparent;text-align:center;font-size:.94rem;line-height:1.3}
+.work-style-form .choice+.choice span{border-left:1px solid var(--line)}
+.work-style-form .choice:hover span{background:var(--pale)}
+.work-style-form .choice input:checked+span,.work-style-form .choice input:checked+span:hover{padding:14px 18px;border:0;background:var(--cobalt);box-shadow:none;color:white}
+.work-style-form .choice input:focus-visible+span{outline:3px solid var(--teal);outline-offset:-3px}
+@media(max-width:650px){.work-style-form .choice+.choice span{border-left:0;border-top:1px solid var(--line)}.work-style-form .choice span{min-height:58px;padding:12px 16px}.work-style-form .choice input:checked+span,.work-style-form .choice input:checked+span:hover{padding:12px 16px}}
