@@ -96,6 +96,35 @@ button,a{touch-action:manipulation}
 .footer-links{display:flex;gap:24px}
 .skill-evidence{margin-top:18px}.skill-evidence p{margin:0 0 10px;color:var(--muted)}.skill-evidence a{color:var(--teal-dark);font-weight:800;text-underline-offset:3px}
 
+/* Give the results and practice plan room to breathe. */
+body:is([data-page="results"],[data-page="next"]) .layout{grid-template-columns:minmax(0,1fr);max-width:1100px}
+body:is([data-page="results"],[data-page="next"]) .sidebar{display:none}
+body[data-page="results"] .result-grid{grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:16px}
+.ranking-context{margin:0 0 16px;color:var(--muted);max-width:75ch}
+.evidence-item{grid-template-columns:76px minmax(0,1fr);gap:12px}
+.evidence-number{font-size:.81rem;line-height:1.3;padding-top:3px}
+.evidence-title{align-items:flex-start;margin-bottom:10px}
+.evidence-title h4{margin:0}
+.evidence-score{flex:0 0 auto;text-align:right;line-height:1.15}
+.evidence-score small{display:block;font-size:.7rem;color:var(--muted);font-weight:700}
+.evidence-score strong{display:block;margin-top:3px}
+.evidence-skills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.evidence-skills span{padding:4px 7px;background:var(--pale);color:var(--ink);font-size:.77rem;line-height:1.3}
+.score-method{border-top:1px solid var(--line);padding-top:16px;margin-top:12px}
+.score-method summary{width:max-content;max-width:100%;color:var(--teal-dark);font-weight:750;cursor:pointer}
+.score-method summary:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+.score-method p{margin:10px 0 0;font-size:.9rem}
+.practice-card h3{max-width:44ch}
+.practice-reason{font-size:.9rem}
+.practice-meta{display:grid;grid-template-columns:minmax(0,.6fr) minmax(0,1.4fr);gap:20px;border-block:1px solid var(--line);padding:18px 0;margin:20px 0}
+.practice-meta span{display:block;color:var(--muted);font-size:.77rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em}
+.practice-meta strong{display:block;margin-top:4px;line-height:1.4}
+.practice-done h4{margin:0 0 8px;font-size:1rem}
+.practice-done ul{margin:0;padding-left:20px;color:var(--ink)}
+.practice-done li+li{margin-top:5px}
+@media(max-width:800px){body[data-page="results"] .result-grid{grid-template-columns:1fr}}
+@media(max-width:650px){.evidence-item{grid-template-columns:64px minmax(0,1fr)}.practice-meta{grid-template-columns:1fr;gap:14px}}
+
 /* A labeled five-segment progress bar shared by every student page. */
 .flow-nav{counter-reset:journey-step;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;max-width:900px;margin-top:22px}
 .flow-nav span,.flow-nav a{counter-increment:journey-step;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:9px;min-width:0;min-height:76px;padding:0 5px;border:0;border-radius:0;background:transparent;color:#b8cde4;font-size:.82rem;font-weight:700;line-height:1.2;text-align:center;white-space:normal}
