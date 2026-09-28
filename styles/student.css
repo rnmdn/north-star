@@ -21,7 +21,7 @@ button,a{touch-action:manipulation}
 .brand{font-weight:850;letter-spacing:-.06em}
 .brand-mark{color:var(--lime)}
 .nav-links{gap:32px}
-.nav-links a:not(.button){font-weight:650}
+.nav-links a:not(.button){font-size:14px;font-weight:650}
 .nav-links a:not(.button):hover{text-underline-offset:6px}
 .nav-links .button{font-weight:750}
 .nav-links .button[aria-current=page]{box-shadow:inset 0 0 0 2px var(--dark)}
