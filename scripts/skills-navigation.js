@@ -26,6 +26,12 @@ const back = document.getElementById('stage-back');
 const next = document.getElementById('stage-next');
 const stageLabel = document.getElementById('stage-label');
 const stageFill = document.getElementById('stage-fill');
+const shortcuts = document.getElementById('stage-shortcuts');
+const reviewMenu = document.getElementById('stage-review-menu');
+const jumpSelect = document.getElementById('stage-jump');
+const jumpButton = document.getElementById('stage-jump-go');
+const returnButton = document.getElementById('stage-return');
+const returnHint = document.getElementById('stage-return-hint');
 const feedbackPanel = document.getElementById('practice-feedback');
 const reviewParts = [...form.children].filter(element => ![quizSection, tasksSection, codingSection, pager, feedbackPanel].includes(element));
 const stages = [
@@ -35,6 +41,7 @@ const stages = [
   { kind: 'review', title: 'Review your work' }
 ];
 const stageKey = 'pathfinder-skills-stage-v3';
+const returnKey = 'pathfinder-skills-return-v1';
 const storedStage = Number(sessionStorage.getItem(stageKey));
 const stageError = document.createElement('p');
 stageError.className = 'error';
@@ -53,9 +60,58 @@ function missingForStage(index) {
 }
 const firstIncomplete = stages.findIndex((_, index) => missingForStage(index).length);
 let currentStage = Number.isInteger(storedStage) && storedStage >= 0 && storedStage < stages.length ? Math.min(storedStage, firstIncomplete < 0 ? stages.length - 1 : firstIncomplete) : 0;
+const storedReturn = sessionStorage.getItem(returnKey);
+let returnStage = storedReturn === null ? null : Number(storedReturn);
+if (!Number.isInteger(returnStage) || returnStage <= currentStage || returnStage >= stages.length) {
+  returnStage = null;
+  sessionStorage.removeItem(returnKey);
+}
+
+function stageName(index) {
+  const stage = stages[index];
+  if (stage.kind === 'quiz') return `question ${stage.index + 1}`;
+  if (stage.kind === 'scenarios') return `scenario ${stage.index + 1}`;
+  return stage.kind === 'coding' ? 'the coding task' : 'review';
+}
+
+function updateReturnButton() {
+  if (returnStage === null) return;
+  returnButton.disabled = stages.slice(currentStage, returnStage).some((_, offset) => missingForStage(currentStage + offset).length);
+  returnHint.hidden = !returnButton.disabled;
+}
+
+function updateShortcuts() {
+  const previous = stages.slice(0, currentStage).map((stage, index) => ({ stage, index })).filter(({ index }) => !missingForStage(index).length);
+  shortcuts.hidden = !previous.length && returnStage === null;
+  reviewMenu.hidden = !previous.length;
+  jumpSelect.replaceChildren(new Option('Choose a completed step', '', true, true));
+  jumpSelect.firstChild.disabled = true;
+  let group;
+  let groupName;
+  previous.forEach(({ stage, index }) => {
+    const name = stage.kind === 'quiz' ? stage.title.replace('Knowledge check · ', '') : stage.kind === 'scenarios' ? 'Written scenarios' : 'Coding task';
+    if (name !== groupName) {
+      group = document.createElement('optgroup');
+      group.label = name;
+      jumpSelect.append(group);
+      groupName = name;
+    }
+    const detail = stage.kind === 'quiz' ? questions[stage.index].querySelector('legend').textContent : stage.kind === 'scenarios' ? scenarios[stage.index].querySelector('h3').textContent : 'JavaScript coding task';
+    group.append(new Option(detail, String(index)));
+  });
+  returnButton.hidden = returnStage === null;
+  if (returnStage !== null) {
+    returnButton.textContent = `Return to ${stageName(returnStage)} →`;
+    updateReturnButton();
+  } else returnHint.hidden = true;
+}
 
 function showStage(index, moveFocus = false) {
   currentStage = index;
+  if (index === returnStage) {
+    returnStage = null;
+    sessionStorage.removeItem(returnKey);
+  }
   sessionStorage.setItem(stageKey, String(index));
   const stage = stages[index];
   quizSection.hidden = stage.kind !== 'quiz';
@@ -79,6 +135,8 @@ function showStage(index, moveFocus = false) {
   else (stage.kind === 'quiz' ? quizSection : stage.kind === 'scenarios' ? tasksSection : codingSection).after(pager);
   form.prepend(stageError);
   stageError.hidden = true;
+  reviewMenu.open = false;
+  updateShortcuts();
   if (moveFocus) {
     stageLabel.scrollIntoView({ block: 'start', behavior: 'auto' });
     stageLabel.focus({ preventScroll: true });
@@ -92,6 +150,18 @@ function updateQuizProgress() {
 
 stageLabel.tabIndex = -1;
 quiz.addEventListener('change', updateQuizProgress);
+window.addEventListener('north-star-skill-progress', updateReturnButton);
+jumpButton.addEventListener('click', () => {
+  if (jumpSelect.value === '') return;
+  const target = Number(jumpSelect.value);
+  if (!Number.isInteger(target) || target < 0 || target >= currentStage || missingForStage(target).length) return;
+  if (returnStage === null) returnStage = currentStage;
+  sessionStorage.setItem(returnKey, String(returnStage));
+  showStage(target, true);
+});
+returnButton.addEventListener('click', () => {
+  if (returnStage !== null && !returnButton.disabled) showStage(returnStage, true);
+});
 back.addEventListener('click', () => showStage(currentStage - 1, true));
 next.addEventListener('click', () => {
   const missing = missingForStage(currentStage);

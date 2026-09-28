@@ -104,7 +104,7 @@ const domainNames = {
   problem_solving: 'Problem solving', systems: 'Systems', software_design: 'Software design',
   troubleshooting: 'Troubleshooting'
 };
-const save = () => sessionStorage.setItem(key, JSON.stringify(state));
+const save = () => { sessionStorage.setItem(key, JSON.stringify(state)); window.dispatchEvent(new Event('north-star-skill-progress')); };
 function completion() {
   return {
     quizAnswered: items.filter(item => Number.isInteger(state.answers[item.id])).length,

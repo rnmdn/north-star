@@ -9,6 +9,17 @@
 .assessment-stage-heading span { color: var(--muted); font-size: .86rem; font-weight: 750; white-space: nowrap; }
 .assessment-track { height: 8px; overflow: hidden; border-radius: 99px; background: #dbe2f4; }
 .assessment-track div { height: 100%; background: var(--cobalt); transform: scaleX(0); transform-origin: left; transition: transform .3s ease-out; }
+.stage-shortcuts { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin: 14px 0 0; }
+.stage-shortcuts details { flex: 1 1 280px; }
+.stage-shortcuts summary { width: fit-content; min-height: 44px; display: flex; align-items: center; color: #204abf; font-weight: 750; cursor: pointer; }
+.stage-shortcuts summary:focus-visible,.stage-shortcuts select:focus-visible,.stage-shortcuts button:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+.stage-shortcuts-picker { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 8px 12px; align-items: end; margin: 6px 0 12px; }
+.stage-shortcuts-picker label { grid-column: 1/-1; font-size: .85rem; font-weight: 700; }
+.stage-shortcuts select { width: 100%; min-width: 0; min-height: 48px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 6px; background: white; color: var(--ink); font: inherit; }
+.stage-shortcuts button { min-height: 48px; padding: 9px 18px; border: 1px solid var(--cobalt); border-radius: 100px; background: var(--cobalt); color: white; font: inherit; font-weight: 800; cursor: pointer; }
+.stage-shortcuts button:disabled { opacity: .5; cursor: not-allowed; }
+.stage-shortcuts #stage-return { background: white; color: #204abf; }
+.stage-shortcuts #stage-return-hint { flex-basis: 100%; color: var(--muted); font-size: .85rem; }
 .skill-group-heading { margin: 28px 0 4px; padding-bottom: 10px; border-bottom: 1px solid var(--line); color: var(--teal-dark); font-size: 1.22rem; }
 #quiz fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 #quiz legend { font-size: clamp(1.25rem,2vw,1.65rem); font-weight: 750; line-height: 1.4; padding: 0 0 24px; max-width: 100%; }
@@ -93,6 +104,9 @@ form .muted { color: var(--muted); }
   #quiz legend { font-size: 1.18rem; }
   #quiz .option { min-height: 58px; padding: 12px 14px; }
   .assessment-stage-heading { align-items: flex-start; flex-direction: column; gap: 2px; }
+  .stage-shortcuts { display: block; }
+  .stage-shortcuts-picker { grid-template-columns: 1fr; }
+  .stage-shortcuts #stage-return { width: 100%; margin-top: 8px; }
 }
 @media(min-width:651px) and (max-width:900px){
   .flow-top .container { grid-template-columns: 1fr; gap: 10px; }
