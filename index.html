@@ -93,24 +93,27 @@
   .intro .step.is-visible .step-number { border-color:#3c65c7; }
   .how-motion .intro .step { opacity:0; transform:translateY(20px); transition:opacity 360ms ease-out,transform 360ms ease-out; }
   .how-motion .intro .step.is-visible { opacity:1; transform:none; }
-  .how-preview { position:relative; display:flex; flex-direction:column; min-height:520px; padding:clamp(32px,4vw,56px); overflow:hidden; border-radius:var(--radius); background:var(--night); color:var(--white); }
-  .how-preview::before,.how-preview::after { content:""; position:absolute; width:320px; aspect-ratio:1; border:1px solid rgba(221,242,255,.18); border-radius:50%; right:-128px; top:-128px; pointer-events:none; }
-  .how-preview::after { width:208px; right:-72px; top:-72px; }
-  .how-preview-mark { position:absolute; right:56px; top:56px; width:32px; aspect-ratio:1; background:var(--ice); clip-path:polygon(50% 0,58% 42%,100% 50%,58% 58%,50% 100%,42% 58%,0 50%,42% 42%); }
-  .how-preview-label { position:relative; margin:0 0 32px; color:var(--ice); font-size:13px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; }
-  .how-preview strong { position:relative; display:block; max-width:12ch; font:400 clamp(38px,4vw,58px)/1.1 Georgia,serif; letter-spacing:-.045em; }
-  .preview-results { position:relative; display:grid; gap:8px; margin:36px 0 28px; }
-  .preview-result { position:relative; display:grid; grid-template-columns:40px minmax(0,1fr); align-items:center; gap:16px; min-height:72px; padding:8px 16px; border:1px solid rgba(221,242,255,.24); border-radius:8px; background:#102b52; }
-  .how-motion .preview-result { opacity:0; transform:translateY(16px); transition:opacity 300ms ease-out,transform 300ms ease-out; }
+  .how-preview { display:grid; place-items:center; min-width:0; padding:clamp(18px,3vw,34px); overflow:hidden; border-radius:var(--radius); background:var(--night); }
+  .preview-sheet { width:min(100%,510px); overflow:hidden; background:var(--white); color:var(--night); box-shadow:0 20px 44px rgba(0,0,0,.2); transform:rotate(-1.2deg); }
+  .preview-sheet-head { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:17px 24px; border-bottom:1px solid #c9d9e9; color:var(--night); font-size:11px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; }
+  .preview-sheet-head::after { content:""; flex:none; width:9px; height:9px; border-radius:50%; background:var(--cobalt); }
+  .preview-sheet-body { padding:clamp(24px,4vw,42px); }
+  .how-preview-label { margin:0 0 12px; color:#3158b5; font-size:12px; font-weight:800; letter-spacing:.13em; text-transform:uppercase; }
+  .preview-sheet-body h3 { max-width:12ch; margin:0; font-size:clamp(35px,4vw,55px); line-height:1.03; letter-spacing:-.055em; }
+  .preview-sheet-body h3 span { color:var(--cobalt); }
+  .preview-sheet-description { max-width:31ch; margin:18px 0 26px; color:#45617f; font-size:16px; line-height:1.5; }
+  .preview-results { display:grid; margin:0; border-top:1px solid #c9d9e9; }
+  .preview-result { display:grid; grid-template-columns:24px minmax(0,1fr) 76px; align-items:center; gap:10px; min-height:51px; border-bottom:1px solid #d6e2ed; font-size:12px; }
+  .how-motion .preview-result { opacity:0; transform:translateY(10px); transition:opacity 300ms ease-out,transform 300ms ease-out; }
   .how-motion .preview-result.is-visible { opacity:1; transform:none; }
-  .preview-result::after { content:""; position:absolute; inset:0; border:2px solid var(--ice); border-radius:inherit; background:rgba(167,220,255,.12); pointer-events:none; opacity:0; }
-  .how-motion .preview-result.is-visible::after { animation:preview-highlight 400ms ease-out both; }
-  @keyframes preview-highlight { 0%,100% { opacity:0; } 45% { opacity:1; } }
-  .preview-result-num { display:grid; place-items:center; width:40px; height:40px; border-radius:50%; background:var(--ice); color:var(--night); font:400 18px/1 Georgia,serif; }
-  .preview-result-copy { display:grid; gap:2px; }
-  .preview-result-copy span { display:block; color:var(--white); font-size:16px; font-weight:700; line-height:1.3; }
-  .preview-result-copy small { display:block; color:#bed8f0; font-size:13px; line-height:1.4; }
-  .how-preview p:last-child { position:relative; max-width:34ch; margin:auto 0 0; color:#d6e5f5; font-size:16px; }
+  .preview-result-num { color:#3158b5; font-size:11px; font-weight:800; }
+  .preview-result-name { min-width:0; font-weight:700; line-height:1.25; }
+  .preview-result-bar { height:5px; background:#dbe6f3; }
+  .preview-result-bar::before { content:""; display:block; width:var(--bar-width); height:100%; background:var(--cobalt); }
+  .preview-sheet-foot { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 24px; background:var(--ice); color:var(--night); font-size:11px; font-weight:800; letter-spacing:.11em; text-transform:uppercase; }
+  .preview-sheet-foot a { text-decoration:none; }
+  .preview-sheet-foot a:hover { color:#3158b5; }
+  .preview-sheet-foot a:focus-visible { outline-color:var(--cobalt); }
   .paths { background:var(--night); color:var(--white); }
   .paths-layout { display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); gap:clamp(48px,8vw,112px); align-items:start; }
   .paths .section-heading { max-width:480px; margin:0; }
@@ -220,9 +223,10 @@
     .nav-links.open { display:flex; }
     .nav-links .nav-cta { align-self:flex-start; }
   }
-  @media (max-width:900px) { .how-layout { grid-template-columns:minmax(0,1fr); gap:48px; } .how-preview { min-height:0; } }
+  @media (max-width:900px) { .how-layout { grid-template-columns:minmax(0,1fr); gap:48px; } }
+  @media (max-width:540px) { .how-preview { padding:16px; } .preview-sheet { transform:rotate(-.4deg); } .preview-sheet-head,.preview-sheet-foot { padding-inline:18px; } .preview-sheet-body { padding:26px 22px; } .preview-sheet-body h3 { font-size:clamp(35px,10vw,47px); } .preview-result { grid-template-columns:20px minmax(0,1fr) 54px; gap:7px; font-size:11px; } }
   @media (max-width:768px) { .intro .step { grid-template-columns:48px minmax(0,1fr); gap:16px; padding-bottom:40px; } .intro .step-number { width:48px; height:48px; font-size:19px; } .intro .steps::before,.intro .steps::after { left:23px; top:36px; bottom:60px; } }
-  @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .hero-journey { height:auto; } .hero { position:relative; } .hero-video,.hero-content,.scene-hill { transform:none!important; } .hero-content,.hero-bottom { opacity:1!important; } .star-rings,.star-glow,.journey-wash { display:none; } .how-motion .intro .step,.how-motion .preview-result { opacity:1; transform:none; transition:none; } .how-motion .preview-result.is-visible::after,.path-item[open] .path-detail { animation:none; } .intro .steps::after { transform:scaleY(1); transition:none; } .assessment-transition { display:none; } }
+  @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .hero-journey { height:auto; } .hero { position:relative; } .hero-video,.hero-content,.scene-hill,.preview-sheet { transform:none!important; } .hero-content,.hero-bottom { opacity:1!important; } .star-rings,.star-glow,.journey-wash { display:none; } .how-motion .intro .step,.how-motion .preview-result { opacity:1; transform:none; transition:none; } .path-item[open] .path-detail { animation:none; } .intro .steps::after { transform:scaleY(1); transition:none; } .assessment-transition { display:none; } }
   </style>
 </head>
 <body>
@@ -259,7 +263,7 @@
           <article class="step"><span class="step-number">02</span><div class="step-copy"><h3>Review your answers</h3><p>Check your answers and edit anything before the skills assessment.</p></div></article>
           <article class="step"><span class="step-number">03</span><div class="step-copy"><h3>Assess your skills</h3><p>Answer knowledge questions and try practical scenarios and a coding task.</p></div></article>
           <article class="step"><span class="step-number">04</span><div class="step-copy"><h3>Explore three paths</h3><p>Compare three directions, then choose a practical next step to try.</p></div></article>
-        </div><aside class="how-preview" aria-label="What to expect"><span class="how-preview-mark" aria-hidden="true"></span><p class="how-preview-label">Illustrative preview</p><strong>Three paths to explore.</strong><div class="preview-results"><div class="preview-result"><span class="preview-result-num">01</span><span class="preview-result-copy"><span>Software development</span><small>Build a useful app</small></span></div><div class="preview-result"><span class="preview-result-num">02</span><span class="preview-result-copy"><span>Cybersecurity</span><small>Try a safe practice lab</small></span></div><div class="preview-result"><span class="preview-result-num">03</span><span class="preview-result-copy"><span>Data science &amp; analytics</span><small>Visualize a dataset</small></span></div></div><p>Examples only. Your three paths depend on your answers.</p></aside></div>
+        </div><aside class="how-preview" aria-label="Example result preview"><div class="preview-sheet"><div class="preview-sheet-head"><span>North Star / Result preview</span></div><div class="preview-sheet-body"><p class="how-preview-label">A direction to explore</p><h3>Software<br>development<span>.</span></h3><p class="preview-sheet-description">See possible paths, the skills behind them, and practical areas to develop.</p><div class="preview-results"><div class="preview-result"><span class="preview-result-num">01</span><span class="preview-result-name">Software development</span><span class="preview-result-bar" style="--bar-width:86%" aria-hidden="true"></span></div><div class="preview-result"><span class="preview-result-num">02</span><span class="preview-result-name">Data science &amp; analytics</span><span class="preview-result-bar" style="--bar-width:62%" aria-hidden="true"></span></div><div class="preview-result"><span class="preview-result-num">03</span><span class="preview-result-name">UI/UX &amp; web development</span><span class="preview-result-bar" style="--bar-width:43%" aria-hidden="true"></span></div></div></div><div class="preview-sheet-foot"><span>Example view</span><a href="assessment.html">Explore →</a></div></div></aside></div>
       </div></section>
       <section class="section paths" id="paths" aria-labelledby="paths-title"><div class="wrap paths-layout">
         <div class="section-heading"><p class="eyebrow">Explore the fields</p><h2 id="paths-title">Where could your skills take you?</h2><p>Open a path to see the work behind it and one small project you can try. You can explore more than one.</p></div>
