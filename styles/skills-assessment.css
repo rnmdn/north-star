@@ -60,9 +60,10 @@ form .muted { color: var(--muted); }
 
 /* Focused assessment layout: one question and its choices at a time. */
 .flow-top { padding: 18px 0 16px; }
-.flow-top h1 { font-size: clamp(1.75rem,2.8vw,2.4rem); margin-bottom: 4px; }
-.flow-top p { font-size: .88rem; }
-.flow-nav { max-width: 740px; margin-top: 12px; }
+.flow-top .container { display: grid; grid-template-columns: minmax(0,1fr) minmax(520px,640px); align-items: center; gap: 24px; }
+.flow-top h1 { font-size: clamp(1.5rem,2.3vw,2rem); margin: 0; }
+.flow-top p { display: none; }
+.flow-nav { width: 100%; max-width: 640px; margin-top: 0; }
 .flow-nav span,.flow-nav a { min-height: 58px; gap: 5px; font-size: .72rem; }
 .flow-nav span::before,.flow-nav a::before { width: 30px; height: 30px; font-size: .78rem; }
 .flow-nav span::after,.flow-nav a::after { top: 14px; }
@@ -81,7 +82,9 @@ form .muted { color: var(--muted); }
 .assessment-pager { padding-top: 18px; border-top: 1px solid var(--line); }
 @media(max-width:650px){
   .flow-top { padding: 14px 0; }
+  .flow-top .container { display: block; }
   .flow-top h1 { font-size: 1.55rem; }
+  .flow-nav { margin-top: 10px; }
   .flow-nav span,.flow-nav a { min-height: 60px; font-size: .62rem; }
   .flow-nav span::before,.flow-nav a::before { width: 28px; height: 28px; }
   .flow-nav span::after,.flow-nav a::after { top: 13px; }
@@ -90,4 +93,7 @@ form .muted { color: var(--muted); }
   #quiz legend { font-size: 1.18rem; }
   #quiz .option { min-height: 58px; padding: 12px 14px; }
   .assessment-stage-heading { align-items: flex-start; flex-direction: column; gap: 2px; }
+}
+@media(min-width:651px) and (max-width:900px){
+  .flow-top .container { grid-template-columns: 1fr; gap: 10px; }
 }
