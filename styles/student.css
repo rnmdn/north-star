@@ -157,3 +157,14 @@ button,a{touch-action:manipulation}
 .exposure-option:has(input:focus-visible){outline:3px solid var(--teal);outline-offset:2px}
 @media(max-width:650px){.check-list{grid-template-columns:1fr}.exposure-option{min-height:66px;padding:14px 16px}}
 @media(prefers-reduced-motion:reduce){.exposure-option{transition:none}}
+
+/* Interest ratings read as one four-point scale instead of separate cards. */
+.interest-form .question{padding:17px 0 20px}
+.interest-form .question legend{padding:0 0 11px;font-size:1rem}
+.interest-form .choices{gap:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:white}
+.interest-form .choice span{justify-content:center;min-height:54px;padding:10px 12px;border:0;border-radius:0;background:transparent;text-align:center;font-size:.86rem;line-height:1.25}
+.interest-form .choice+.choice span{border-left:1px solid var(--line)}
+.interest-form .choice:hover span{background:var(--pale)}
+.interest-form .choice input:checked+span,.interest-form .choice input:checked+span:hover{padding:10px 12px;border:0;background:var(--cobalt);box-shadow:none;color:white}
+.interest-form .choice input:focus-visible+span{outline:3px solid var(--teal);outline-offset:-3px}
+@media(max-width:650px){.interest-form .choice:nth-child(3) span{border-left:0;border-top:1px solid var(--line)}.interest-form .choice:nth-child(4) span{border-top:1px solid var(--line)}.interest-form .choice span{min-height:52px;font-size:.84rem}}
