@@ -224,10 +224,13 @@ body[data-page="results"] .result-grid{grid-template-columns:minmax(0,1.25fr) mi
 @media(max-width:650px){.work-style-form .choices.two{grid-template-columns:1fr;gap:10px}.work-style-form .choice span{min-height:58px;padding:12px 42px}.work-style-form .choice input:checked+span,.work-style-form .choice input:checked+span:hover{padding:11px 41px}}
 
 /* A single review sheet keeps every answer visible without uneven card heights. */
-body[data-page="review"] .layout{display:block;max-width:1040px}
-body[data-page="review"] .sidebar{display:none}
-body[data-page="review"] .page-title,body[data-page="review"] .lede{text-align:center;margin-inline:auto}
+body[data-page="review"] .layout{grid-template-columns:minmax(0,1fr) 260px;gap:clamp(28px,4vw,58px)}
 body[data-page="review"] .lede{margin-bottom:28px}
+body[data-page="review"] .review-sidebar{position:sticky;top:24px;padding:8px 0 0 22px;border:0;border-left:1px solid var(--line);background:transparent}
+.review-sidebar .sidebar-label{margin:0 0 7px;color:var(--teal-dark);font-size:.72rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
+.review-sidebar h2{margin:0 0 8px;font:400 1.55rem/1.2 Georgia,'Times New Roman',serif;letter-spacing:-.03em}
+.review-sidebar p{margin:0;color:var(--muted);font-size:.91rem;line-height:1.55}
+.review-sidebar .sidebar-divider{height:1px;margin:23px 0;background:var(--line)}
 .review-sheet{overflow:hidden;border:1px solid var(--line);border-radius:5px;background:#fbfdff;box-shadow:0 18px 45px rgba(6,21,45,.06)}
 .review-section{padding:27px clamp(20px,3vw,36px);border-bottom:1px solid var(--line)}
 .review-section-head{display:flex;align-items:baseline;justify-content:space-between;gap:18px;margin-bottom:12px}
@@ -245,4 +248,5 @@ body[data-page="review"] .lede{margin-bottom:28px}
 .review-sheet-footer{padding:25px clamp(20px,3vw,36px);background:#eaf3ff}
 .review-sheet-footer p{margin:0 0 17px;color:var(--muted);font-size:.88rem}
 .review-sheet-footer .button{display:flex;width:100%;border-radius:5px}
+@media(max-width:900px){body[data-page="review"] .layout{grid-template-columns:minmax(0,1fr)}body[data-page="review"] .review-sidebar{position:static;padding:20px 0 0;border-left:0;border-top:1px solid var(--line)}}
 @media(max-width:650px){.review-section{padding-block:22px}.review-answers{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-auto-flow:row}.review-answers>div{padding:9px 0}.review-sheet-footer{padding-block:22px}}
