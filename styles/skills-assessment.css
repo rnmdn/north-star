@@ -59,11 +59,18 @@ form .muted { color: var(--muted); }
 @media(prefers-reduced-motion:reduce){.assessment-track div{transition:none}}
 
 /* Focused assessment layout: one question and its choices at a time. */
-.layout { display: block; max-width: 1040px; padding-top: 44px; }
+.flow-top { padding: 18px 0 16px; }
+.flow-top h1 { font-size: clamp(1.75rem,2.8vw,2.4rem); margin-bottom: 4px; }
+.flow-top p { font-size: .88rem; }
+.flow-nav { max-width: 740px; margin-top: 12px; }
+.flow-nav span,.flow-nav a { min-height: 58px; gap: 5px; font-size: .72rem; }
+.flow-nav span::before,.flow-nav a::before { width: 30px; height: 30px; font-size: .78rem; }
+.flow-nav span::after,.flow-nav a::after { top: 14px; }
+.layout { display: block; max-width: 1040px; padding-top: 28px; }
 .main-panel { width: 100%; }
 .layout > .sidebar { display: none; }
-.main-panel > .page-title { margin-bottom: 8px; }
-.main-panel > .lede { margin-bottom: 18px; }
+.main-panel > .page-title { font-size: clamp(1.65rem,2.5vw,2.15rem); margin-bottom: 4px; }
+.main-panel > .lede { margin-bottom: 12px; font-size: .94rem; }
 .main-panel > .notice { margin: 0; padding: 12px 16px; border-left: 3px solid var(--cobalt); font-size: .88rem; }
 .main-panel form > section:first-child { margin-top: 22px; }
 .main-panel form > section > h2 { font-size: 1.05rem; color: var(--teal-dark); }
@@ -73,7 +80,12 @@ form .muted { color: var(--muted); }
 #quiz .skill-group-heading { display: none; }
 .assessment-pager { padding-top: 18px; border-top: 1px solid var(--line); }
 @media(max-width:650px){
-  .layout { padding-top: 28px; }
+  .flow-top { padding: 14px 0; }
+  .flow-top h1 { font-size: 1.55rem; }
+  .flow-nav span,.flow-nav a { min-height: 60px; font-size: .62rem; }
+  .flow-nav span::before,.flow-nav a::before { width: 28px; height: 28px; }
+  .flow-nav span::after,.flow-nav a::after { top: 13px; }
+  .layout { padding-top: 24px; }
   #quiz { padding: 20px 16px; }
   #quiz legend { font-size: 1.18rem; }
   #quiz .option { min-height: 58px; padding: 12px 14px; }
