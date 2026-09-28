@@ -42,12 +42,12 @@ button,a{touch-action:manipulation}
 @media(max-width:650px){.nav-links{top:88px;gap:20px}.nav-links .button{align-self:start}.footer{padding-top:52px}.footer-inner{align-items:start;flex-direction:column}.footer-bottom{margin-top:52px}}
 
 /* Assessment clarity and error recovery. */
-.scale-guide{background:var(--pale);border-left:4px solid var(--teal);padding:18px 20px;margin-bottom:12px}
+.scale-guide{background:var(--pale);padding:18px 20px;margin-bottom:12px}
 .assessment-section-head{margin:18px 0 14px}
 .assessment-section-head h2{font-size:1rem}
 .scale-guide strong{display:block;line-height:1.35}
 .scale-guide p{margin:8px 0 0;color:var(--muted);font-size:.9rem}
-.question.needs-answer{border-left:3px solid var(--error);padding-left:14px}
+.question.needs-answer legend{color:var(--error)}
 .question-error{color:var(--error);font-size:.88rem;font-weight:750;margin:10px 0 0}
 .skill-slider-question{position:relative;padding:20px 0 26px}
 .skill-slider-question legend{padding-bottom:4px}
