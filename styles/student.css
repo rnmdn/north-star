@@ -178,4 +178,4 @@ button,a{touch-action:manipulation}
 .work-style-form .choice:hover span{background:var(--pale)}
 .work-style-form .choice input:checked+span,.work-style-form .choice input:checked+span:hover{padding:14px 18px;border:0;background:var(--cobalt);box-shadow:none;color:white}
 .work-style-form .choice input:focus-visible+span{outline:3px solid var(--teal);outline-offset:-3px}
-@media(max-width:650px){.work-style-form .choice+.choice span{border-left:0;border-top:1px solid var(--line)}.work-style-form .choice span{min-height:58px;padding:12px 16px}.work-style-form .choice input:checked+span,.work-style-form .choice input:checked+span:hover{padding:12px 16px}}
+@media(max-width:650px){.work-style-form .choices.two{grid-template-columns:1fr}.work-style-form .choice+.choice span{border-left:0;border-top:1px solid var(--line)}.work-style-form .choice span{min-height:58px;padding:12px 16px}.work-style-form .choice input:checked+span,.work-style-form .choice input:checked+span:hover{padding:12px 16px}}
