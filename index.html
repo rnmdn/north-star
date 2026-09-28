@@ -93,8 +93,8 @@
   .intro .step.is-visible .step-number { border-color:#3c65c7; }
   .how-motion .intro .step { opacity:0; transform:translateY(20px); transition:opacity 360ms ease-out,transform 360ms ease-out; }
   .how-motion .intro .step.is-visible { opacity:1; transform:none; }
-  .how-preview { display:grid; place-items:center; min-width:0; padding:clamp(18px,3vw,34px); overflow:hidden; border-radius:var(--radius); background:var(--night); }
-  .preview-sheet { width:min(100%,510px); overflow:hidden; background:var(--white); color:var(--night); box-shadow:0 20px 44px rgba(0,0,0,.2); transform:rotate(-1.2deg); }
+  .how-preview { display:grid; place-items:center; min-width:0; padding:clamp(8px,1.5vw,18px); }
+  .preview-sheet { width:min(100%,510px); overflow:hidden; background:var(--white); color:var(--night); box-shadow:0 16px 40px rgba(6,21,45,.16); transform:rotate(-1.2deg); }
   .preview-sheet-head { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:17px 24px; border-bottom:1px solid #c9d9e9; color:var(--night); font-size:11px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; }
   .preview-sheet-head::after { content:""; flex:none; width:9px; height:9px; border-radius:50%; background:var(--cobalt); }
   .preview-sheet-body { padding:clamp(24px,4vw,42px); }
@@ -224,7 +224,7 @@
     .nav-links .nav-cta { align-self:flex-start; }
   }
   @media (max-width:900px) { .how-layout { grid-template-columns:minmax(0,1fr); gap:48px; } }
-  @media (max-width:540px) { .how-preview { padding:16px; } .preview-sheet { transform:rotate(-.4deg); } .preview-sheet-head,.preview-sheet-foot { padding-inline:18px; } .preview-sheet-body { padding:26px 22px; } .preview-sheet-body h3 { font-size:clamp(35px,10vw,47px); } .preview-result { grid-template-columns:20px minmax(0,1fr) 54px; gap:7px; font-size:11px; } }
+  @media (max-width:540px) { .how-preview { padding:8px; } .preview-sheet { transform:rotate(-.4deg); } .preview-sheet-head,.preview-sheet-foot { padding-inline:18px; } .preview-sheet-body { padding:26px 22px; } .preview-sheet-body h3 { font-size:clamp(35px,10vw,47px); } .preview-result { grid-template-columns:20px minmax(0,1fr) 54px; gap:7px; font-size:11px; } }
   @media (max-width:768px) { .intro .step { grid-template-columns:48px minmax(0,1fr); gap:16px; padding-bottom:40px; } .intro .step-number { width:48px; height:48px; font-size:19px; } .intro .steps::before,.intro .steps::after { left:23px; top:36px; bottom:60px; } }
   @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .hero-journey { height:auto; } .hero { position:relative; } .hero-video,.hero-content,.scene-hill,.preview-sheet { transform:none!important; } .hero-content,.hero-bottom { opacity:1!important; } .star-rings,.star-glow,.journey-wash { display:none; } .how-motion .intro .step,.how-motion .preview-result { opacity:1; transform:none; transition:none; } .path-item[open] .path-detail { animation:none; } .intro .steps::after { transform:scaleY(1); transition:none; } .assessment-transition { display:none; } }
   </style>
