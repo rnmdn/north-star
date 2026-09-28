@@ -26,7 +26,6 @@ const back = document.getElementById('stage-back');
 const next = document.getElementById('stage-next');
 const stageLabel = document.getElementById('stage-label');
 const stageFill = document.getElementById('stage-fill');
-const pageHeading = document.getElementById('page-heading');
 const feedbackPanel = document.getElementById('practice-feedback');
 const reviewParts = [...form.children].filter(element => ![quizSection, tasksSection, codingSection, pager, feedbackPanel].includes(element));
 const stages = [
@@ -71,16 +70,18 @@ function showStage(index, moveFocus = false) {
   stageLabel.textContent = stage.title;
   document.getElementById('stage-count').textContent = stage.kind === 'quiz' ? `Question ${stage.index + 1} of ${questions.length}` : stage.kind === 'scenarios' ? `Scenario ${stage.index + 1} of ${scenarios.length}` : `Step ${index + 1} of ${stages.length}`;
   stageFill.style.transform = `scaleX(${(index + 1) / stages.length})`;
+  stageFill.parentElement.setAttribute('aria-valuemax', String(stages.length));
+  stageFill.parentElement.setAttribute('aria-valuenow', String(index + 1));
   back.hidden = index === 0;
   next.hidden = index === stages.length - 1;
   next.textContent = index === stages.length - 2 ? 'Review your work →' : 'Next →';
   if (stage.kind === 'review') form.append(pager);
   else (stage.kind === 'quiz' ? quizSection : stage.kind === 'scenarios' ? tasksSection : codingSection).after(pager);
-  pager.before(stageError);
+  form.prepend(stageError);
   stageError.hidden = true;
   if (moveFocus) {
-    pageHeading.scrollIntoView({ block: 'start', behavior: 'auto' });
-    pageHeading.focus({ preventScroll: true });
+    stageLabel.scrollIntoView({ block: 'start', behavior: 'auto' });
+    stageLabel.focus({ preventScroll: true });
   }
 }
 
@@ -89,7 +90,7 @@ function updateQuizProgress() {
   document.getElementById('quiz-progress').textContent = `${answered} of ${questions.length} knowledge questions answered`;
 }
 
-pageHeading.tabIndex = -1;
+stageLabel.tabIndex = -1;
 quiz.addEventListener('change', updateQuizProgress);
 back.addEventListener('click', () => showStage(currentStage - 1, true));
 next.addEventListener('click', () => {
