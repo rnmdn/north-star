@@ -222,3 +222,27 @@ body[data-page="results"] .result-grid{grid-template-columns:minmax(0,1.25fr) mi
 .work-style-form .choice input:checked+span::before{content:'';position:absolute;right:22px;top:50%;z-index:1;width:5px;height:9px;border-right:2px solid white;border-bottom:2px solid white;transform:translateY(-65%) rotate(45deg);pointer-events:none}
 .work-style-form .choice input:focus-visible+span{outline:3px solid var(--teal);outline-offset:3px}
 @media(max-width:650px){.work-style-form .choices.two{grid-template-columns:1fr;gap:10px}.work-style-form .choice span{min-height:58px;padding:12px 42px}.work-style-form .choice input:checked+span,.work-style-form .choice input:checked+span:hover{padding:11px 41px}}
+
+/* A single review sheet keeps every answer visible without uneven card heights. */
+body[data-page="review"] .layout{display:block;max-width:1040px}
+body[data-page="review"] .sidebar{display:none}
+body[data-page="review"] .page-title,body[data-page="review"] .lede{text-align:center;margin-inline:auto}
+body[data-page="review"] .lede{margin-bottom:28px}
+.review-sheet{overflow:hidden;border:1px solid var(--line);border-radius:5px;background:#fbfdff;box-shadow:0 18px 45px rgba(6,21,45,.06)}
+.review-section{padding:27px clamp(20px,3vw,36px);border-bottom:1px solid var(--line)}
+.review-section-head{display:flex;align-items:baseline;justify-content:space-between;gap:18px;margin-bottom:12px}
+.review-section-head h3{margin:0;font:400 clamp(1.45rem,2.2vw,1.8rem)/1.2 Georgia,'Times New Roman',serif;letter-spacing:-.035em}
+.review-edit{flex:none;color:var(--teal-dark);font-weight:800;text-underline-offset:3px}
+.review-edit:hover{color:var(--cobalt)}
+.review-answers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(24px,4vw,54px);margin:0}
+.review-skills{grid-template-rows:repeat(5,auto);grid-auto-flow:column}
+.review-interests{grid-template-rows:repeat(3,auto);grid-auto-flow:column}
+.review-answers>div{display:flex;justify-content:space-between;align-items:baseline;gap:15px;min-width:0;padding:7px 0;border-bottom:1px solid #d9e5f1;font-size:.9rem;line-height:1.35}
+.review-answers dt{font-weight:700}
+.review-answers dd{flex:none;margin:0;color:var(--muted);text-align:right}
+.review-simple-list{list-style:none;margin:0;padding:0;color:var(--muted);font-size:.95rem}
+.review-simple-list li+li{margin-top:5px}
+.review-sheet-footer{padding:25px clamp(20px,3vw,36px);background:#eaf3ff}
+.review-sheet-footer p{margin:0 0 17px;color:var(--muted);font-size:.88rem}
+.review-sheet-footer .button{display:flex;width:100%;border-radius:5px}
+@media(max-width:650px){.review-section{padding-block:22px}.review-answers{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-auto-flow:row}.review-answers>div{padding:9px 0}.review-sheet-footer{padding-block:22px}}
