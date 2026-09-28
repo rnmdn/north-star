@@ -49,6 +49,22 @@ button,a{touch-action:manipulation}
 .scale-guide p{margin:8px 0 0;color:var(--muted);font-size:.9rem}
 .question.needs-answer{border-left:3px solid var(--error);padding-left:14px}
 .question-error{color:var(--error);font-size:.88rem;font-weight:750;margin:10px 0 0}
+.skill-slider-question{position:relative;padding:20px 0 26px}
+.skill-slider-question legend{padding-bottom:4px}
+.skill-slider-value{display:block;color:var(--teal-dark);font-size:.9rem;font-weight:800;margin-bottom:14px}
+.skill-slider{display:block;width:100%;height:32px;margin:0;appearance:none;-webkit-appearance:none;background:transparent;cursor:pointer}
+.skill-slider::-webkit-slider-runnable-track{height:7px;border-radius:99px;background:linear-gradient(to right,var(--cobalt) var(--slider-fill),#dbe3ef var(--slider-fill))}
+.skill-slider::-moz-range-track{height:7px;border-radius:99px;background:#dbe3ef}
+.skill-slider::-moz-range-progress{height:7px;border-radius:99px;background:var(--cobalt)}
+.skill-slider::-webkit-slider-thumb{appearance:none;-webkit-appearance:none;width:22px;height:22px;margin-top:-7.5px;border:3px solid white;border-radius:50%;background:var(--cobalt);box-shadow:0 0 0 2px var(--cobalt)}
+.skill-slider::-moz-range-thumb{width:16px;height:16px;border:3px solid white;border-radius:50%;background:var(--cobalt);box-shadow:0 0 0 2px var(--cobalt)}
+.skill-slider[data-answered="false"]::-webkit-slider-thumb{background:#8795ad;box-shadow:0 0 0 2px #8795ad}
+.skill-slider[data-answered="false"]::-moz-range-thumb{background:#8795ad;box-shadow:0 0 0 2px #8795ad}
+.skill-slider-labels{display:flex;justify-content:space-between;gap:8px;margin-top:7px;color:var(--muted);font-size:.75rem;line-height:1.25}
+.skill-slider-labels span{width:25%;text-align:center}
+.skill-slider-labels span:first-child{text-align:left}
+.skill-slider-labels span:last-child{text-align:right}
+.skill-slider:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
 .skill-summary{margin:0 0 18px}
 .skill-summary>div{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:8px 0;border-bottom:1px solid var(--line)}
 .skill-summary dt{font-weight:700}.skill-summary dd{margin:0;color:var(--muted);text-align:right}
