@@ -46,6 +46,12 @@ button,a{touch-action:manipulation}
 .assessment-section-head{margin:18px 0 14px}
 .assessment-section-head h2{font-size:1rem}
 .scale-guide strong{display:block;line-height:1.35}
+.skill-demo{margin-top:8px}
+.skill-demo summary{width:max-content;max-width:100%;color:var(--cobalt);font-size:.85rem;font-weight:750;cursor:pointer}
+.skill-demo summary:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+.skill-demo figure{margin:12px 0 0}
+.skill-demo video{display:block;width:100%;max-width:620px;height:auto;border-radius:10px;background:white}
+.skill-demo figcaption{margin-top:8px;color:var(--muted);font-size:.82rem;line-height:1.4}
 .scale-guide dl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:14px 0 0}
 .scale-guide dt{color:var(--ink);font-size:.85rem;font-weight:800;line-height:1.3}
 .scale-guide dd{margin:4px 0 0;color:var(--muted);font-size:.82rem;line-height:1.4}
