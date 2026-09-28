@@ -194,15 +194,15 @@ body[data-page="results"] .result-grid{grid-template-columns:minmax(0,1.25fr) mi
 .exposure-option:hover{border-color:var(--cobalt)}
 .exposure-option:has(input:checked){border-color:var(--cobalt);background:#eef3ff}
 .exposure-option:has(input:focus-visible){outline:3px solid var(--teal);outline-offset:2px}
-.exposure-option.just-changed{animation:exposure-select .22s ease-out}
-.exposure-option.just-changed input:checked{animation:exposure-check .22s ease-out}
-#answered-count.just-changed{animation:exposure-count .22s ease-out}
-@keyframes exposure-select{50%{background:#e7efff}}
-@keyframes exposure-check{50%{transform:scale(1.1)}}
+.exposure-option.just-changed{animation:exposure-select .32s ease-out}
+.exposure-option.just-changed input{animation:exposure-check .32s ease-out}
+#answered-count.just-changed{animation:exposure-count .32s ease-out}
+@keyframes exposure-select{50%{box-shadow:0 0 0 4px rgba(61,101,244,.18)}}
+@keyframes exposure-check{50%{transform:scale(1.18)}}
 @keyframes exposure-count{50%{color:var(--cobalt)}}
 #answered-count{display:inline-block}
 @media(max-width:650px){.check-list{grid-template-columns:1fr}.exposure-option{min-height:66px;padding:14px 16px}}
-@media(prefers-reduced-motion:reduce){.exposure-option{transition:none}.exposure-option.just-changed,.exposure-option.just-changed input:checked,#answered-count.just-changed{animation:none}}
+@media(prefers-reduced-motion:reduce){.exposure-option{transition:none}.exposure-option.just-changed,.exposure-option.just-changed input,#answered-count.just-changed{animation:none}}
 
 /* Interest ratings read as one four-point scale instead of separate cards. */
 .interest-form .question{padding:17px 0 20px}
