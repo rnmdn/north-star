@@ -189,13 +189,21 @@ body[data-page="results"] .result-grid{grid-template-columns:minmax(0,1.25fr) mi
 
 /* Optional prior experience is a checklist, not a required progress task. */
 .check-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:20px}
-.exposure-option{display:flex;align-items:center;gap:14px;min-height:82px;padding:18px;border:1px solid var(--line);border-radius:10px;background:white;font-size:.94rem;font-weight:750;line-height:1.4;cursor:pointer;transition:border-color .18s ease,background-color .18s ease}
+.exposure-option{display:flex;align-items:center;gap:14px;min-height:82px;padding:18px;border:1px solid var(--line);border-radius:10px;background:white;font-size:.94rem;font-weight:750;line-height:1.4;cursor:pointer;transition:border-color .28s ease,background-color .28s ease,transform .18s ease,box-shadow .18s ease}
 .exposure-option input{flex:0 0 auto;width:21px;height:21px;margin:0;accent-color:var(--cobalt);cursor:pointer}
-.exposure-option:hover{border-color:var(--cobalt)}
-.exposure-option:has(input:checked){border-color:var(--cobalt);background:#eef3ff}
+.exposure-option:hover{border-color:var(--cobalt);transform:translateY(-1px);box-shadow:0 3px 10px rgba(25,57,112,.08)}
+.exposure-option:has(input:checked){border-color:var(--cobalt);background:#dfe9ff;box-shadow:inset 4px 0 0 var(--cobalt)}
+.exposure-option:has(input:checked)::after{content:"Selected";margin-left:auto;padding:4px 8px;border-radius:99px;background:var(--cobalt);color:white;font-size:.68rem;font-weight:800;line-height:1;white-space:nowrap}
 .exposure-option:has(input:focus-visible){outline:3px solid var(--teal);outline-offset:2px}
-@media(max-width:650px){.check-list{grid-template-columns:1fr}.exposure-option{min-height:66px;padding:14px 16px}}
-@media(prefers-reduced-motion:reduce){.exposure-option{transition:none}}
+.exposure-option.just-changed{animation:exposure-select .4s ease-out}
+.exposure-option.just-changed input:checked{animation:exposure-check .3s ease-out}
+#answered-count.just-changed{animation:exposure-count .32s ease-out}
+@keyframes exposure-select{20%{transform:scale(.97)}55%{transform:translateY(-5px) scale(1.02);box-shadow:0 10px 22px rgba(48,87,221,.24),0 0 0 5px rgba(59,100,255,.2)}}
+@keyframes exposure-check{50%{transform:scale(1.3)}}
+@keyframes exposure-count{45%{transform:translateY(-3px) scale(1.08);color:var(--cobalt)}}
+#answered-count{display:inline-block}
+@media(max-width:650px){.check-list{grid-template-columns:1fr}.exposure-option{min-height:66px;padding:14px 16px}.exposure-option:has(input:checked)::after{font-size:.62rem}}
+@media(prefers-reduced-motion:reduce){.exposure-option{transition:none}.exposure-option:hover{transform:none;box-shadow:none}.exposure-option.just-changed,.exposure-option.just-changed input:checked,#answered-count.just-changed{animation:none}}
 
 /* Interest ratings read as one four-point scale instead of separate cards. */
 .interest-form .question{padding:17px 0 20px}
